@@ -34,12 +34,12 @@ class Training:
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        self.averag_speed: float = Training.get_distance(self) / self.duration
+        self.averag_speed: float = self.get_distance() / self.duration
         return self.averag_speed
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        pass
+        ...
 
     def show_training_info(self):
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -54,9 +54,6 @@ class Running(Training):
     """Тренировка: бег."""
     CALORIES_MEAN_SPEED_MULTIPLIER: int = 18
     CALORIES_MEAN_SPEED_SHIFT: float = 1.79
-
-    def __init__(self, action: int, duration: float, weight: float) -> None:
-        super().__init__(action, duration, weight)
 
     def get_spent_calories(self) -> float:
         self.result_calor: float = ((self.CALORIES_MEAN_SPEED_MULTIPLIER
@@ -148,4 +145,5 @@ if __name__ == '__main__':
 
     for workout_type, data in packages:
         training = read_package(workout_type, data)
-        main(training)
+        if read_package is not None:
+            main(training)
