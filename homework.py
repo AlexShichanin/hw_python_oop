@@ -122,15 +122,9 @@ def read_package(workout_type: str, data: list):
                        'WLK': SportsWalking,
                        'SWM': Swimming}
 
-    if workout_type == 'RUN':
-        run1 = code_dict['RUN'](*data)
-        return run1
-    elif workout_type == 'WLK':
-        walk1 = code_dict['WLK'](*data)
-        return walk1
-    elif workout_type == 'SWM':
-        swim1 = code_dict['SWM'](*data)
-        return swim1
+    Train = code_dict.get(workout_type)
+    if Train:
+        return Train(*data)
 
 
 def main(training: Training) -> None:
